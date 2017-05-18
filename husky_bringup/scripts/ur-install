@@ -1,0 +1,10 @@
+#!/usr/bin/env python
+
+import robot_upstart
+import os
+
+j = robot_upstart.Job(name="dual-ur5", interface=os.environ.get('ROBOT_NETWORK'), workspace_setup=os.environ.get('ROBOT_SETUP'))
+j.add(package="husky_bringup", glob="launch/dual_ur5/left_ur5.launch")
+j.add(package="husky_bringup", glob="launch/dual_ur5/right_ur5.launch")
+
+j.install()
